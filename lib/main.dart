@@ -29,12 +29,19 @@ class LoginDemo extends StatefulWidget {
 }
 
 class _LoginDemoState extends State<LoginDemo> {
+  bool ShowText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Login Page"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.camera),
+            onPressed: () {},
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -51,7 +58,7 @@ class _LoginDemoState extends State<LoginDemo> {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Email',
+                  labelText: ShowText ? 'Enter Email' : 'Email',
                 ),
               ),
             ),
