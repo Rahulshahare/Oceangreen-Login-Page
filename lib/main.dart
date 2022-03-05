@@ -6,11 +6,15 @@ List<CameraDescription>? cameras;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-}
 
-void main() {
+  cameras = await availableCameras();
+
   runApp(const MyApp());
 }
+
+// void main() {
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -47,7 +51,12 @@ class _LoginDemoState extends State<LoginDemo> {
         actions: [
           IconButton(
             icon: Icon(Icons.camera),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CameraApp()),
+              );
+            },
           )
         ],
       ),
@@ -121,5 +130,19 @@ class _LoginDemoState extends State<LoginDemo> {
         ),
       ),
     );
+  }
+}
+
+class CameraApp extends StatefulWidget {
+  const CameraApp({Key? key}) : super(key: key);
+
+  @override
+  _CameraAppState createState() => _CameraAppState();
+}
+
+class _CameraAppState extends State<CameraApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
